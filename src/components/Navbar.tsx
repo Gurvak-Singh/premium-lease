@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Building2, Home, Users, Building, Phone } from 'lucide-react';
+import { Menu, X, ChevronDown, Building2, Home, Users, Building } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,28 +58,25 @@ const Navbar = () => {
           <div className="hidden md:flex space-x-8">
             <div className="relative group">
               <button className={linkClasses}>
-                Properties <ChevronDown size={16} />
+                Rentals <ChevronDown size={16} />
               </button>
               <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg overflow-hidden z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 invisible group-hover:visible">
-                <Link to="/properties/apartments" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 flex items-center">
-                  <Home size={16} className="mr-2" /> Apartments
+                <Link to="/properties/residential" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 flex items-center">
+                  <Home size={16} className="mr-2" /> Residential
                 </Link>
-                <Link to="/properties/townhouses" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 flex items-center">
-                  <Building size={16} className="mr-2" /> Townhouses
+                <Link to="/properties/student" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 flex items-center">
+                  <Users size={16} className="mr-2" /> Student
                 </Link>
                 <Link to="/commercial" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 flex items-center">
-                  <Building2 size={16} className="mr-2" /> Commercial
+                  <Building size={16} className="mr-2" /> Commercial
                 </Link>
               </div>
             </div>
-            <Link to="/student-programs" className={linkClasses}>
-              <Users size={16} className="mr-1" /> Student Programs
-            </Link>
             <Link to="/about" className={linkClasses}>
               About Us
             </Link>
             <Link to="/contact" className={linkClasses}>
-              <Phone size={16} className="mr-1" /> Contact
+              Contact
             </Link>
           </div>
 
@@ -105,25 +102,22 @@ const Navbar = () => {
         >
           <div className="px-4 py-4 space-y-4">
             <div className="border-b pb-2">
-              <p className="font-semibold text-gray-800 mb-2">Properties</p>
-              <Link to="/properties/apartments" className="block pl-4 py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
-                <Home size={16} className="inline mr-2" /> Apartments
+              <p className="font-semibold text-gray-800 mb-2">Rentals</p>
+              <Link to="/properties/residential" className="block pl-4 py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
+                <Home size={16} className="inline mr-2" /> Residential
               </Link>
-              <Link to="/properties/townhouses" className="block pl-4 py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
-                <Building size={16} className="inline mr-2" /> Townhouses
+              <Link to="/properties/student" className="block pl-4 py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
+                <Users size={16} className="inline mr-2" /> Student
               </Link>
               <Link to="/commercial" className="block pl-4 py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
-                <Building2 size={16} className="inline mr-2" /> Commercial
+                <Building size={16} className="inline mr-2" /> Commercial
               </Link>
             </div>
-            <Link to="/student-programs" className="block py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
-              <Users size={16} className="inline mr-2" /> Student Programs
-            </Link>
             <Link to="/about" className="block py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
               About Us
             </Link>
             <Link to="/contact" className="block py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
-              <Phone size={16} className="inline mr-2" /> Contact
+              Contact
             </Link>
           </div>
         </div>
