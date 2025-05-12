@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { GraduationCap, Users, Clock, CreditCard, Shield, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 import PropertyCard from '../components/PropertyCard';
@@ -53,33 +52,76 @@ const StudentProgramsPage = () => {
 
   return (
     <div>
-      {/* Header */}
-      <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="md:w-1/2 mb-10 md:mb-0">
-              <span className="inline-block bg-blue-700 text-blue-100 px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                Student Exclusive
-              </span>
-              <h1 className="text-4xl font-bold mb-4">Student Leasing Programs</h1>
-              <p className="text-xl text-blue-100 mb-8">
+      {/* Modern Header with Overlay - Seamless connection with navbar */}
+      <div className="relative overflow-hidden mt-0">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.pexels.com/photos/8199422/pexels-photo-8199422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+            alt="Students studying" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-indigo-900/90"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-4 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="text-white">
+              <div className="flex items-center mb-6">
+                <span className="bg-blue-600 h-1 w-12 rounded-full mr-4"></span>
+                <span className="text-blue-200 uppercase tracking-wider font-medium">Student Housing Solutions</span>
+              </div>
+              
+              <h1 className="text-5xl font-bold mb-6 leading-tight">
+                <span className="text-white drop-shadow-md">Your Academic Success </span>
+                <span className="text-blue-300">Starts With Great Housing</span>
+              </h1>
+              
+              <p className="text-xl text-blue-100 mb-10 max-w-xl">
                 Specialized housing solutions designed for student life, with flexible leases and amenities that support your academic journey.
               </p>
+              
               <div className="flex flex-wrap gap-4">
-                <a href="#student-properties" className="bg-white text-blue-900 px-6 py-3 rounded-md font-medium hover:bg-blue-50 transition-colors">
+                <a href="#student-properties" className="bg-white text-blue-900 px-8 py-4 rounded-md font-medium hover:bg-blue-50 transition-colors shadow-lg">
                   View Properties
                 </a>
-                <a href="#apply" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white/10 transition-colors">
+                <a href="#apply" className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-md font-medium hover:bg-white/20 transition-colors">
                   Apply Now
                 </a>
               </div>
             </div>
-            <div className="md:w-1/2">
-              <img 
-                src="https://images.pexels.com/photos/8199422/pexels-photo-8199422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                alt="Students in apartment" 
-                className="rounded-lg shadow-xl"
-              />
+            
+            <div className="bg-white p-8 rounded-xl shadow-2xl backdrop-blur-sm bg-opacity-95 hidden lg:block">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">Quick Application</h2>
+              <p className="text-gray-600 mb-6">Get started with your student housing application in minutes.</p>
+              
+              <div className="space-y-4">
+                <div className="flex gap-4">
+                  <div className="w-1/2">
+                    <label className="block text-gray-700 mb-2 text-sm font-medium">First Name</label>
+                    <input type="text" className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  </div>
+                  <div className="w-1/2">
+                    <label className="block text-gray-700 mb-2 text-sm font-medium">Last Name</label>
+                    <input type="text" className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-gray-700 mb-2 text-sm font-medium">Email</label>
+                  <input type="email" className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+                
+                <div>
+                  <label className="block text-gray-700 mb-2 text-sm font-medium">University/College</label>
+                  <input type="text" className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+                
+                <button className="w-full bg-blue-800 text-white py-3 rounded-md font-medium hover:bg-blue-700 transition-colors">
+                  Get Housing Options
+                </button>
+              </div>
             </div>
           </div>
         </div>

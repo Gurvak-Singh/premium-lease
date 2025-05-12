@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import { GraduationCap, Clock, CreditCard, Users } from 'lucide-react';
 
@@ -33,7 +33,7 @@ const StudentPrograms = () => {
           <span className="inline-block bg-blue-700 text-blue-100 px-4 py-1 rounded-full text-sm font-semibold mb-3">
             For Students
           </span>
-          <h2 className="text-3xl font-bold mb-4">Student Leasing Programs</h2>
+          <h2 className="text-3xl font-bold mb-4 text-white drop-shadow-lg">Student Leasing Programs</h2>
           <p className="max-w-2xl mx-auto text-blue-100">
             Specialized leasing options designed specifically for students, making your housing experience stress-free and affordable.
           </p>
@@ -43,13 +43,13 @@ const StudentPrograms = () => {
           {programs.map((program, index) => (
             <div 
               key={index} 
-              className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-colors duration-300"
+              className="bg-blue-800/40 backdrop-blur-sm rounded-lg p-6 hover:bg-blue-800/50 transition-colors duration-300 shadow-md"
             >
-              <div className="bg-blue-800/50 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+              <div className="bg-blue-700 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                 {program.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-2">{program.title}</h3>
-              <p className="text-blue-100">{program.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-white">{program.title}</h3>
+              <p className="text-blue-50">{program.description}</p>
             </div>
           ))}
         </div>

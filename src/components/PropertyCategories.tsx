@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import { Building, Home, Building2 } from 'lucide-react';
 
@@ -53,7 +53,7 @@ const PropertyCategories = () => {
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" 
                   style={{ backgroundImage: `url(${category.bgImage})` }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent opacity-85 group-hover:opacity-90 transition-opacity duration-300"></div>
                 </div>
                 
                 {/* Content */}
@@ -61,8 +61,8 @@ const PropertyCategories = () => {
                   <div className="mb-4 bg-blue-800/90 w-14 h-14 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                     {category.icon}
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">{category.title}</h3>
-                  <p className="text-gray-200 mb-4">{category.description}</p>
+                  <h3 className="text-2xl font-bold mb-2 text-white drop-shadow-md">{category.title}</h3>
+                  <p className="text-gray-100 mb-4 drop-shadow-md">{category.description}</p>
                   <span className="text-blue-300 font-medium inline-flex items-center">
                     Explore Properties
                     <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -1,24 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Building2, Home, Users, Building } from 'lucide-react';
+import { Menu, X, Building2, Home, Users, Building } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  
+  // Check if current path is a property listing page
+  const isPropertyPage = 
+    location.pathname.includes('/properties/') || 
+    location.pathname.includes('/property/') ||
+    location.pathname.includes('/commercial') ||
+    location.pathname.includes('/student-programs') ||
+    location.pathname.includes('/student-property/');
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
-        setIsScrolled(false);
+        // Only switch to transparent if not on a property page
+        setIsScrolled(isPropertyPage ? true : false);
       }
     };
 
+    // Initial check - always use scrolled style on property pages
+    setIsScrolled(isPropertyPage ? true : false);
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isPropertyPage]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -29,11 +41,11 @@ const Navbar = () => {
   };
 
   const navbarClasses = `fixed w-full z-50 transition-all duration-300 ${
-    isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+    isScrolled ? (isPropertyPage ? 'bg-white py-2 border-b border-gray-100' : 'bg-white shadow-md py-2') : 'bg-transparent py-6'
   }`;
 
   const linkClasses = `transition-colors duration-200 flex items-center gap-1 ${
-    isScrolled ? 'text-gray-800 hover:text-blue-800' : 'text-white hover:text-blue-200'
+    isScrolled ? 'text-gray-800 hover:text-blue-800' : 'text-white hover:text-blue-200 font-medium'
   }`;
 
   return (
@@ -56,22 +68,15 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
-            <div className="relative group">
-              <button className={linkClasses}>
-                Rentals <ChevronDown size={16} />
-              </button>
-              <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg overflow-hidden z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 invisible group-hover:visible">
-                <Link to="/properties/residential" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 flex items-center">
-                  <Home size={16} className="mr-2" /> Residential
-                </Link>
-                <Link to="/properties/student" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 flex items-center">
-                  <Users size={16} className="mr-2" /> Student
-                </Link>
-                <Link to="/commercial" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 flex items-center">
-                  <Building size={16} className="mr-2" /> Commercial
-                </Link>
-              </div>
-            </div>
+            <Link to="/properties/residential" className={linkClasses}>
+              <Home size={16} className="mr-1" /> Residential
+            </Link>
+            <Link to="/student-programs" className={linkClasses}>
+              <Users size={16} className="mr-1" /> Student Rentals
+            </Link>
+            <Link to="/commercial" className={linkClasses}>
+              <Building size={16} className="mr-1" /> Commercial
+            </Link>
             <Link to="/about" className={linkClasses}>
               About Us
             </Link>
@@ -101,18 +106,15 @@ const Navbar = () => {
           }`}
         >
           <div className="px-4 py-4 space-y-4">
-            <div className="border-b pb-2">
-              <p className="font-semibold text-gray-800 mb-2">Rentals</p>
-              <Link to="/properties/residential" className="block pl-4 py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
-                <Home size={16} className="inline mr-2" /> Residential
-              </Link>
-              <Link to="/properties/student" className="block pl-4 py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
-                <Users size={16} className="inline mr-2" /> Student
-              </Link>
-              <Link to="/commercial" className="block pl-4 py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
-                <Building size={16} className="inline mr-2" /> Commercial
-              </Link>
-            </div>
+            <Link to="/properties/residential" className="block py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
+              <Home size={16} className="inline mr-2" /> Residential
+            </Link>
+            <Link to="/student-programs" className="block py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
+              <Users size={16} className="inline mr-2" /> Student Rentals
+            </Link>
+            <Link to="/commercial" className="block py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
+              <Building size={16} className="inline mr-2" /> Commercial
+            </Link>
             <Link to="/about" className="block py-2 text-gray-800 hover:text-blue-800" onClick={closeMenu}>
               About Us
             </Link>

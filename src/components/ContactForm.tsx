@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
 
-const ContactForm = () => {
+interface ContactFormProps {
+  propertyName?: string;
+}
+
+const ContactForm: React.FC<ContactFormProps> = ({ propertyName }) => {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -133,11 +137,11 @@ const ContactForm = () => {
             <textarea
               id="message"
               name="message"
-              value={formState.message}
+              value={formState.message || (propertyName ? `I'm interested in ${propertyName}` : '')}
               onChange={handleChange}
               rows={4}
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Tell us about your needs or ask any questions..."
+              placeholder={propertyName ? `I'm interested in scheduling a viewing for ${propertyName}...` : "Tell us about your needs or ask any questions..."}
               required
             ></textarea>
           </div>

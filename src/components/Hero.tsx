@@ -1,14 +1,15 @@
-import React from 'react';
 import { Search } from 'lucide-react';
 
 const Hero = () => {
+
   return (
-    <div className="relative h-screen">
+    <div className="relative h-[80vh]">
       {/* Hero Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center" 
         style={{ 
           backgroundImage: 'url("https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")',
+          backgroundSize: '100% auto'
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-gray-900/60"></div>
