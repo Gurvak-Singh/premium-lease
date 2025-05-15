@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Users, ShieldCheck, TrendingUp, Award, Building2, Mail, Linkedin, Play, Building, UserCheck, Target, MapPin } from 'lucide-react';
+import { Users, ShieldCheck, Award, TrendingUp, UserCheck, Target, MapPin, Building2, Play, Mail, Linkedin } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import Testimonial from '../components/Testimonial';
-import MetricCounter from '../components/MetricCounter';
 import FAQItem from '../components/FAQItem';
 
 interface TeamMember {
@@ -29,9 +29,15 @@ interface FAQ {
 }
 
 interface Metric {
-  icon: typeof Building;
+  icon: LucideIcon;
   value: string;
   label: string;
+}
+
+interface Value {
+  icon: LucideIcon;
+  title: string;
+  description: string;
 }
 
 const AboutPage = () => {
@@ -39,24 +45,24 @@ const AboutPage = () => {
     document.title = 'About Us | PremiumLease';
   }, []);
 
-  const values = [
+  const values: Value[] = [
     {
-      icon: <Users size={32} className="text-blue-800" />,
+      icon: Users,
       title: "Client-Centric Approach",
       description: "We put our clients' needs first, ensuring personalized service and tailored solutions."
     },
     {
-      icon: <ShieldCheck size={32} className="text-blue-800" />,
+      icon: ShieldCheck,
       title: "Integrity & Transparency",
       description: "We operate with honesty and clear communication in all our business practices."
     },
     {
-      icon: <TrendingUp size={32} className="text-blue-800" />,
+      icon: Award,
       title: "Quality & Excellence",
       description: "We maintain high standards in our properties and services, exceeding expectations."
     },
     {
-      icon: <Award size={32} className="text-blue-800" />,
+      icon: TrendingUp,
       title: "Expertise & Innovation",
       description: "Our experienced team combines industry knowledge with forward-thinking solutions."
     }
@@ -106,11 +112,31 @@ const AboutPage = () => {
   ];
 
   const metrics: Metric[] = [
-    { icon: Building, value: "5000+", label: "Properties Managed" },
-    { icon: UserCheck, value: "98%", label: "Client Satisfaction" },
-    { icon: Target, value: "15000+", label: "Successful Leases" },
-    { icon: TrendingUp, value: "35%", label: "YoY Growth" },
-    { icon: MapPin, value: "25+", label: "Cities Served" }
+    {
+      icon: Building2,
+      value: "5000+",
+      label: "Properties Managed"
+    },
+    {
+      icon: UserCheck,
+      value: "98%",
+      label: "Client Satisfaction"
+    },
+    {
+      icon: Target,
+      value: "15000+",
+      label: "Successful Leases"
+    },
+    {
+      icon: TrendingUp,
+      value: "35%",
+      label: "YoY Growth"
+    },
+    {
+      icon: MapPin,
+      value: "25+",
+      label: "Cities Served"
+    }
   ];
 
   const testimonials: Testimonial[] = [
@@ -159,132 +185,147 @@ const AboutPage = () => {
 
   return (
     <div>
-      {/* Header */}
-      <div className="bg-blue-900 text-white py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">About PremiumLease</h1>
-          <p className="text-xl text-blue-100 max-w-2xl">
-            Transforming the property leasing experience with unmatched expertise and personalized service since 2010.
-          </p>
+      {/* Hero Section */}
+      <section className="relative py-32 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-900">
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight drop-shadow-xl">
+              Transforming the property leasing experience with unmatched expertise and personalized service since 2010
+            </h1>
+            <p className="text-lg text-white/90 mb-10 leading-relaxed drop-shadow-lg max-w-2xl mx-auto">
+              We're committed to finding the perfect space for every client, whether you're seeking a home, expanding your business, or looking for student housing.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <Link
+                to="/properties/all"
+                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all shadow-xl hover:shadow-2xl text-base"
+              >
+                Explore Properties
+              </Link>
+              <Link
+                to="/contact"
+                className="bg-white/15 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/25 transition-all shadow-xl hover:shadow-2xl text-base"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Our Story */}
-      <section className="py-16 bg-white">
+      <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-blue-50">
         {/* Video Section */}
-        <div className="container mx-auto px-4 mb-16">
-          <div className="relative rounded-xl overflow-hidden shadow-xl">
+        <div className="container mx-auto px-4 mb-20">
+          <div className="relative group rounded-2xl overflow-hidden shadow-2xl transform transition-transform duration-300 hover:scale-[1.02]">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-blue-800/20 z-10"></div>
             <img 
               src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1920" 
               alt="Company Overview Video Thumbnail"
-              className="w-full h-[400px] object-cover"
+              className="w-full h-[500px] object-cover transform scale-105 group-hover:scale-100 transition-transform duration-300"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group cursor-pointer hover:bg-opacity-30 transition-all">
-              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
-                <Play size={40} className="text-blue-800 ml-2" />
+            <div className="absolute inset-0 flex items-center justify-center z-20">
+              <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-2xl">
+                <Play size={48} className="text-white ml-2" />
               </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent text-white">
-              <h3 className="text-2xl font-semibold mb-2">Our Journey to Excellence</h3>
-              <p>Learn how we've transformed property leasing over the past decade</p>
+            <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white z-20">
+              <h3 className="text-3xl font-bold mb-3 drop-shadow-xl text-white/95">Our Journey to Excellence</h3>
+              <p className="text-lg text-white/90 max-w-2xl drop-shadow-lg">Learn how we've transformed property leasing over the past decade</p>
             </div>
           </div>
         </div>
+
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-block bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                Our Story
+          <div className="grid grid-cols-1 gap-16 items-center">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-10 shadow-xl space-y-8 max-w-none w-full">
+              <div>
+                <span className="inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
+                  Our Story
+                </span>
+                <h2 className="text-3xl font-bold text-blue-900 mb-6">Committed to Excellence in Property Leasing</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <p className="text-blue-900/90 text-lg leading-relaxed">
+                  Founded in 2010, PremiumLease began with a simple mission: to transform the property leasing experience by combining exceptional spaces with outstanding service. What started as a small operation has grown into a comprehensive leasing company serving diverse clients across residential, commercial, and student markets.
+                </p>
+                <p className="text-blue-900/90 text-lg leading-relaxed">
+                  Our team of experienced professionals is dedicated to understanding the unique needs of each client, whether they're searching for their first apartment, expanding their business, or looking for the perfect student housing solution. We take pride in our personalized approach and commitment to excellence.
+                </p>
+              </div>
+              
+              <div className="pt-6">
+                <Link to="/contact" className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-900 transition-all shadow-lg hover:shadow-xl">
+                  Start Your Journey With Us
+                  <TrendingUp size={20} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Impact & Values */}
+      <section className="py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
+        <div className="container mx-auto px-4">
+          {/* Metrics Subsection */}
+          <div className="mb-32">
+            <div className="text-center mb-16">
+              <span className="inline-block bg-white/15 backdrop-blur-sm text-white/90 px-6 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
+                Our Impact
               </span>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Committed to Excellence in Property Leasing</h2>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Founded in 2010, PremiumLease began with a simple mission: to transform the property leasing experience by combining exceptional spaces with outstanding service. What started as a small operation has grown into a comprehensive leasing company serving diverse clients across residential, commercial, and student markets.
+              <h2 className="text-4xl font-bold text-white mb-6 drop-shadow-lg">PremiumLease by the Numbers</h2>
+              <p className="text-white/90 text-lg max-w-2xl mx-auto leading-relaxed">
+                Our impact in the property leasing industry
               </p>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Our team of experienced professionals is dedicated to understanding the unique needs of each client, whether they're searching for their first apartment, expanding their business, or looking for the perfect student housing solution. We take pride in our personalized approach and commitment to excellence.
-              </p>
-              
-              <div className="flex items-center">
-                <div className="flex -space-x-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <img 
-                      key={i}
-                      src={`https://images.pexels.com/photos/22205${i}/pexels-photo-22205${i}.jpeg?auto=compress&cs=tinysrgb&w=120`} 
-                      alt={`Team member ${i}`}
-                      className="w-12 h-12 rounded-full border-2 border-white"
-                    />
-                  ))}
-                </div>
-                <div className="ml-4">
-                  <p className="font-medium text-gray-800">Join our growing team</p>
-                  <a href="#careers" className="text-blue-800 hover:underline text-sm">View open positions</a>
-                </div>
-              </div>
             </div>
-            
-            <div className="relative">
-              <div className="absolute -top-6 -left-6 w-32 h-32 bg-blue-100 rounded-lg z-0"></div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-200 rounded-lg z-0"></div>
-              
-              <img 
-                src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                alt="Our team" 
-                className="relative z-10 rounded-lg shadow-xl"
-              />
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+              {metrics.map((metric, index) => (
+                <div key={index} className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl hover:bg-white/15 transition-all transform hover:scale-105">
+                  <metric.icon size={32} className="text-white/90 mx-auto mb-4" />
+                  <div className="text-3xl font-bold text-white mb-2 drop-shadow-md">{metric.value}</div>
+                  <div className="text-white/80 font-medium">{metric.label}</div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Metrics Section */}
-      <section className="py-16 bg-blue-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">PremiumLease by the Numbers</h2>
-            <p className="text-blue-100 max-w-2xl mx-auto">Our impact in the property leasing industry</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {metrics.map((metric, index) => (
-              <MetricCounter
-                key={index}
-                icon={metric.icon}
-                value={metric.value}
-                label={metric.label}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Values Subsection */}
+          <div>
+            <div className="text-center mb-16">
+              <span className="inline-block bg-white/15 backdrop-blur-sm text-white/90 px-6 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
+                Our Core Values
+              </span>
+              <h2 className="text-4xl font-bold mb-6 text-white drop-shadow-lg">
+                What Drives Us Forward
+              </h2>
+              <p className="text-white/90 text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+                Our values shape every interaction and decision we make
+              </p>
+            </div>
 
-      {/* Our Values */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-semibold mb-4">
-              Our Values
-            </span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Guiding Principles That Define Us</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              These core values shape every aspect of our business and drive our commitment to excellence.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                  {value.icon}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((value, index) => (
+                <div
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm rounded-xl p-8 text-white hover:bg-white/15 transition-all transform hover:-translate-y-1 hover:shadow-2xl"
+                >
+                  <div className="bg-white/15 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                    <value.icon className="text-white/95" size={40} />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-white/95 drop-shadow-lg">{value.title}</h3>
+                  <p className="text-white/90 leading-relaxed drop-shadow-md">{value.description}</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Our Team */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-semibold mb-4">
@@ -339,7 +380,7 @@ const AboutPage = () => {
       </section>
 
       {/* Milestones */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-semibold mb-4">
@@ -432,7 +473,7 @@ const AboutPage = () => {
         </div>
       </section>
       {/* Testimonials */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-semibold mb-4">
@@ -452,7 +493,7 @@ const AboutPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-semibold mb-4">
@@ -471,60 +512,72 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Enhanced CTA Section */}
-      <section className="py-16 bg-blue-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Ready to Find Your Perfect Space?</h2>
-              <p className="text-blue-100 text-lg mb-8">
-                Whether you're looking for a new home, expanding your business, or seeking student housing, we're here to help.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 mb-8">
-                <Link to="/properties/student" className="bg-white text-blue-800 px-6 py-3 rounded-md font-medium hover:bg-blue-50 transition-colors">
-                  Find Student Housing
-                </Link>
-                <Link to="/properties/commercial" className="bg-white text-blue-800 px-6 py-3 rounded-md font-medium hover:bg-blue-50 transition-colors">
-                  Explore Commercial Properties
-                </Link>
-                <Link to="/properties/residential" className="bg-white text-blue-800 px-6 py-3 rounded-md font-medium hover:bg-blue-50 transition-colors">
-                  View Residential Options
-                </Link>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6 shadow-lg">
-              <h3 className="text-blue-800 font-semibold text-xl mb-4 text-center">Quick Inquiry Form</h3>
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Call to Action */}
+      <section className="py-16 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-white mb-4 drop-shadow-lg">
+              Ready to Find Your Perfect Space?
+            </h2>
+            <p className="text-white/90 text-base max-w-2xl mx-auto leading-relaxed">
+              Whether you're looking for a new home, expanding your business, or seeking student housing, we're here to help.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+            <Link
+              to="/student-housing"
+              className="bg-white rounded-lg p-4 text-center hover:shadow-lg transition-all hover:-translate-y-1"
+            >
+              <h3 className="text-lg font-semibold text-blue-900">Find Student Housing</h3>
+            </Link>
+            <Link
+              to="/commercial"
+              className="bg-white rounded-lg p-4 text-center hover:shadow-lg transition-all hover:-translate-y-1"
+            >
+              <h3 className="text-lg font-semibold text-blue-900">Explore Commercial Properties</h3>
+            </Link>
+            <Link
+              to="/residential"
+              className="bg-white rounded-lg p-4 text-center hover:shadow-lg transition-all hover:-translate-y-1"
+            >
+              <h3 className="text-lg font-semibold text-blue-900">View Residential Options</h3>
+            </Link>
+          </div>
+
+          <div className="max-w-xl mx-auto bg-white rounded-lg shadow-xl p-6">
+            <h3 className="text-xl font-semibold text-blue-900 mb-4 text-center">Quick Inquiry Form</h3>
+            <form className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+                  className="w-full px-3 py-2 rounded-md border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 transition-all"
                 />
                 <input
                   type="email"
                   placeholder="Email Address"
-                  className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+                  className="w-full px-3 py-2 rounded-md border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 transition-all"
                 />
-                <select className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 col-span-2">
-                  <option value="">Select Property Type</option>
-                  <option value="residential">Residential</option>
-                  <option value="commercial">Commercial</option>
-                  <option value="student">Student Housing</option>
-                </select>
-                <textarea
-                  placeholder="Your Message"
-                  rows={4}
-                  className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 col-span-2"
-                ></textarea>
-                <button
-                  type="submit"
-                  className="col-span-2 bg-blue-800 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition-colors"
-                >
-                  Send Inquiry
-                </button>
-              </form>
-            </div>
+              </div>
+              <select className="w-full px-3 py-2 rounded-md border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 transition-all">
+                <option value="">Select Property Type</option>
+                <option value="residential">Residential</option>
+                <option value="commercial">Commercial</option>
+                <option value="student">Student Housing</option>
+              </select>
+              <textarea
+                placeholder="Your Message"
+                rows={3}
+                className="w-full px-3 py-2 rounded-md border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 transition-all"
+              ></textarea>
+              <button
+                type="submit"
+                className="w-full bg-blue-900 text-white py-2.5 rounded-md font-semibold hover:bg-blue-800 transition-all shadow-md hover:shadow-lg text-sm"
+              >
+                Send Inquiry
+              </button>
+            </form>
           </div>
         </div>
       </section>

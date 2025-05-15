@@ -7,19 +7,21 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   
-  // Check if current path is a property listing page
+  // Check if current path is a property listing page or about page
   const isPropertyPage = 
     location.pathname.includes('/properties/') || 
     location.pathname.includes('/property/') ||
     location.pathname.includes('/commercial') ||
     location.pathname.includes('/student-programs') ||
-    location.pathname.includes('/student-property/');
+    location.pathname.includes('/student-property/') ||
+    location.pathname === '/about';
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
+        // Only switch to transparent if not on a property page or about page
         // Only switch to transparent if not on a property page
         setIsScrolled(isPropertyPage ? true : false);
       }
@@ -40,7 +42,7 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
-  const navbarClasses = `fixed w-full z-50 transition-all duration-300 ${
+  const navbarClasses = `fixed top-0 w-full z-50 transition-all duration-300 ${
     isScrolled ? (isPropertyPage ? 'bg-white py-2 border-b border-gray-100' : 'bg-white shadow-md py-2') : 'bg-transparent py-6'
   }`;
 

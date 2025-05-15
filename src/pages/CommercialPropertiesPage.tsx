@@ -38,39 +38,90 @@ const CommercialPropertiesPage = () => {
 
   return (
     <div>
-      {/* Header */}
-      <div className="relative bg-gradient-to-r from-gray-900 to-blue-900 text-white py-20">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="md:w-1/2 mb-10 md:mb-0">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-md">
-                Commercial Property Solutions
+      {/* Modern Header with Dynamic Overlay */}
+      <div className="relative overflow-hidden mt-0">
+        {/* Background Image with Gradient Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.pexels.com/photos/1098982/pexels-photo-1098982.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+            alt="Modern commercial district" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-indigo-900/95"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-4 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="text-white">
+              <div className="flex items-center mb-6">
+                <span className="bg-blue-600 h-1 w-12 rounded-full mr-4"></span>
+                <span className="text-blue-200 uppercase tracking-wider font-medium">Premium Commercial Space</span>
+              </div>
+              
+              <h1 className="text-5xl font-bold mb-6 leading-tight">
+                <span className="text-white drop-shadow-md">Elevate Your Business </span>
+                <span className="text-blue-300">With Premium Spaces</span>
               </h1>
-              <p className="text-xl text-blue-100 mb-10 leading-relaxed">
-                Premium commercial spaces to help your business thrive in ideal locations with flexible leasing options.
+              
+              <p className="text-xl text-blue-100 mb-10 max-w-xl leading-relaxed">
+                Discover premium commercial properties designed to enhance your business success, featuring modern amenities and prime locations.
               </p>
-              <div className="flex flex-wrap gap-5">
+              
+              <div className="flex flex-wrap gap-4">
                 <a 
                   href="#commercial-listings" 
-                  className="bg-white text-blue-900 px-8 py-4 rounded-md font-semibold hover:bg-blue-50 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                  className="bg-white text-blue-900 px-8 py-4 rounded-md font-medium hover:bg-blue-50 transition-colors shadow-lg"
                 >
                   View Properties
                 </a>
                 <a 
                   href="#contact" 
-                  className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-md font-semibold hover:bg-white/20 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                  className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-md font-medium hover:bg-white/20 transition-colors"
                 >
                   Schedule Consultation
                 </a>
               </div>
             </div>
-            <div className="md:w-1/2 relative">
-              <div className="absolute inset-0 bg-black/40 rounded-lg z-10"></div> {/* Dark overlay */}
-              <img 
-                src="https://images.pexels.com/photos/3759082/pexels-photo-3759082.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                alt="Modern commercial building" 
-                className="rounded-lg shadow-2xl relative z-0"
-              />
+            
+            <div className="bg-white/95 p-8 rounded-xl shadow-2xl backdrop-blur-sm hidden lg:block">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">Quick Property Search</h2>
+              <p className="text-gray-600 mb-6">Find the perfect commercial space for your business needs.</p>
+              
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-gray-700 mb-2 text-sm font-medium">Property Type</label>
+                  <select className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option>Office Space</option>
+                    <option>Retail Space</option>
+                    <option>Industrial Space</option>
+                    <option>Mixed Use</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-gray-700 mb-2 text-sm font-medium">Location</label>
+                  <input 
+                    type="text" 
+                    placeholder="Enter city or area"
+                    className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-gray-700 mb-2 text-sm font-medium">Space Required (sq ft)</label>
+                  <select className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option>Under 1,000</option>
+                    <option>1,000 - 2,500</option>
+                    <option>2,500 - 5,000</option>
+                    <option>5,000+</option>
+                  </select>
+                </div>
+                
+                <button className="w-full bg-blue-800 text-white py-3 rounded-md font-medium hover:bg-blue-700 transition-colors">
+                  Search Properties
+                </button>
+              </div>
             </div>
           </div>
         </div>

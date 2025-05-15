@@ -195,11 +195,11 @@ const StudentProgramsPage = () => {
           
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              <div className="bg-blue-800 text-white p-6 rounded-lg text-center">
-                <Calendar size={32} className="mx-auto mb-3" />
-                <h3 className="text-xl font-semibold mb-2">Fall-Spring Lease</h3>
-                <p>August - May (9 months)</p>
-                <p className="mt-2 text-blue-200">Most popular option</p>
+              <div className="bg-blue-800 p-6 rounded-lg text-center">
+                <Calendar size={32} className="mx-auto mb-3 text-white/90" />
+                <h3 className="text-xl font-semibold mb-2 text-white/95 drop-shadow-lg">Fall-Spring Lease</h3>
+                <p className="text-white/90">August - May (9 months)</p>
+                <p className="text-white/80 text-sm mt-2">Most popular option</p>
               </div>
               <div className="bg-white border border-gray-200 p-6 rounded-lg text-center">
                 <Calendar size={32} className="mx-auto mb-3 text-blue-800" />
@@ -207,11 +207,11 @@ const StudentProgramsPage = () => {
                 <p className="text-gray-600">August - August (12 months)</p>
                 <p className="mt-2 text-gray-500">Best value option</p>
               </div>
-              <div className="bg-white border border-gray-200 p-6 rounded-lg text-center">
+              <div className="bg-white p-6 rounded-lg text-center shadow-md hover:shadow-lg transition-all">
                 <Calendar size={32} className="mx-auto mb-3 text-blue-800" />
-                <h3 className="text-xl font-semibold mb-2">Semester Lease</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Semester Lease</h3>
                 <p className="text-gray-600">Per semester (4-5 months)</p>
-                <p className="mt-2 text-gray-500">For exchange students</p>
+                <p className="text-gray-500 text-sm mt-2">For exchange students</p>
               </div>
             </div>
             
