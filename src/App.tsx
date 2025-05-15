@@ -8,6 +8,7 @@ import PropertyDetailPage from './pages/PropertyDetailPage';
 import StudentProgramsPage from './pages/StudentProgramsPage';
 import StudentPropertyDetailPage from './pages/StudentPropertyDetailPage';
 import CommercialPropertiesPage from './pages/CommercialPropertiesPage';
+import CommercialPropertyDetailPage from './pages/CommercialPropertyDetailPage';
 import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/student-programs" element={<StudentProgramsPage />} />
             <Route path="/student-property/:id" element={<StudentPropertyDetailPage />} />
             <Route path="/commercial" element={<CommercialPropertiesPage />} />
+            <Route path="/commercial-property/:id" element={<CommercialPropertyDetailPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/about" element={<AboutPage />} />
           </Routes>

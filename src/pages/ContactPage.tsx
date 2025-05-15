@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { MapPin, Phone, Mail, Clock, MessageSquare } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 
@@ -34,12 +34,23 @@ const ContactPage = () => {
   return (
     <div>
       {/* Header */}
-      <div className="bg-blue-900 text-white py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl text-blue-100 max-w-2xl">
-            Have questions or need assistance? Our team is here to help you find your perfect property solution.
-          </p>
+      <div className="relative bg-gradient-to-br from-blue-900 to-blue-800 text-white pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] opacity-20 bg-cover bg-center bg-fixed transform scale-105" 
+          style={{
+            backgroundPosition: '50% 20%',
+            filter: 'saturate(1.2) brightness(0.8)'
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-800/85 to-blue-900/90" />
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl font-bold mb-6 leading-tight text-white/90">
+              Let's Start a Conversation
+            </h1>
+            <p className="text-xl text-blue-100 leading-relaxed">
+              Whether you're looking for your next property or need assistance with leasing, our dedicated team is here to guide you every step of the way.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -166,11 +177,16 @@ const ContactPage = () => {
             </p>
           </div>
           
-          <div className="bg-gray-200 h-96 rounded-lg">
-            {/* Placeholder for map */}
-            <div className="w-full h-full flex items-center justify-center">
-              <MapPin size={48} className="text-gray-400" />
-            </div>
+          <div className="bg-gray-200 h-96 rounded-lg overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1620847109032!5m2!1sen!2s"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>

@@ -10,6 +10,12 @@ interface PropertyCardProps {
 }
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured = false, isCommercial = false }) => {
+  // Get the correct route based on property type and isCommercial prop
+  const getPropertyRoute = () => {
+    if (type === 'Student Housing') return `/student-property/${id}`;
+    if (type === 'Commercial' || isCommercial) return `/commercial-property/${id}`;
+    return `/property/${id}`;
+  };
   const {
     id,
     title,
@@ -94,7 +100,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured = false,
         
         <div className="mt-6">
           <Link
-            to={type === 'Student Housing' ? `/student-property/${id}` : `/property/${id}`}
+            to={getPropertyRoute()}
             className="inline-flex items-center text-blue-800 font-medium group-hover:text-blue-600"
           >
             View Details <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />

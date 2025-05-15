@@ -14,7 +14,8 @@ const Navbar = () => {
     location.pathname.includes('/commercial') ||
     location.pathname.includes('/student-programs') ||
     location.pathname.includes('/student-property/') ||
-    location.pathname === '/about';
+    location.pathname === '/about' ||
+    location.pathname === '/contact';
 
   useEffect(() => {
     const handleScroll = () => {
