@@ -1,6 +1,10 @@
 [build]
 command = "npm run build"
 publish = "dist"
+buildPublic = "dist"
 
 [build.environment]
 NODE_VERSION = "18.18.0"
+
+[site]
+bucket = "dist"
